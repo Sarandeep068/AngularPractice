@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("//use.fontawesome.com/releases/v5.0.13/css/all.css");
+
+li {
+    font-size: large;
+}
+
+div.panel-heading {
+   font-size: x-large;
+}

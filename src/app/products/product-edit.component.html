@@ -1,0 +1,82 @@
+<div class="container" *ngIf="product">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal" novalidate [formGroup]="editForm" (ngSubmit)="submit()">
+                    <fieldset>
+                        <legend class="text-center header">{{pageTitle}}</legend>
+
+                        <div class="form-group" [ngClass]="{'has-error': ProductName.invalid && ProductName.touched}">
+                            <span class="col-md-1 col-md-offset-1 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="name" formControlName="productName" name="productName" type="text" placeholder="Product Name" class="form-control">
+                                <div class="alert alert-danger" *ngIf="ProductName.touched && !ProductName.valid">
+                                    <span *ngIf="ProductName.errors.required"> Please fill in the field </span>
+                                    <span *ngIf="ProductName.errors.minlength"> Product name can not be less than {{ProductName.errors.minlength.requiredLength}} characters </span>
+                                    <span *ngIf="ProductName.errors.maxlength"> Product name can not be greater than {{ProductName.errors.maxlength.requiredLength}} characters </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" [ngClass]="{'has-error': ProductCode.invalid && ProductCode.touched}">
+                            <span class="col-md-1 col-md-offset-1 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="productCode" formControlName="productCode" name="productCode" type="text" placeholder="Product Code" class="form-control">
+                                <div class="alert alert-danger" *ngIf="ProductCode.touched && !ProductCode.valid && !ProductCode.pending">
+                                    <span *ngIf="ProductCode.errors.required"> Please fill in the field </span>
+                                    <span *ngIf="ProductCode.errors.productCodeValidator"> Product Code already exist </span>
+                                </div>
+                                <div class="alert alert-warning" *ngIf="ProductCode.pending">
+                                    <span> Checking Product Code </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" [ngClass]="{'has-error': Price.invalid && Price.touched}">
+                            <span class="col-md-1 col-md-offset-1 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="price" formControlName="price" name="price" type="text" placeholder="Price" class="form-control">
+                                <div class="alert alert-danger" *ngIf="Price.touched && !Price.valid">
+                                    <span *ngIf="Price.errors.required"> Please fill in the field </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" [ngClass]="{'has-error': StarRating.invalid && StarRating.touched}">
+                            <span class="col-md-1 col-md-offset-1 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="starRating" formControlName="starRating" name="starRating" type="text" placeholder="Star Rating" class="form-control">
+                                <div class="alert alert-danger" *ngIf="StarRating.touched && !StarRating.valid">
+                                    <span *ngIf="StarRating.errors.range"> Star Rating can't be greater than {{StarRating.errors.range.maxValue}} or less than {{StarRating.errors.range.minValue}} </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" [ngClass]="{'has-error': this.ImageUrl.invalid && ImageUrl.touched}">
+                            <span class="col-md-1 col-md-offset-1 text-center"></span>
+                            <div class="col-md-8">
+                                <input id="imageUrl" formControlName="imageUrl" name="imageUrl" type="text" placeholder="Image Url" class="form-control">
+                                <div class="alert alert-danger" *ngIf="ImageUrl.touched && !ImageUrl.valid">
+                                    <span *ngIf="ImageUrl.errors.required"> Please fill in the field </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-1 text-center"></span>
+                            <div class="col-md-8">
+                                <textarea class="form-control" id="description" formControlName="description" name="description" placeholder="Product Description" rows="7"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
