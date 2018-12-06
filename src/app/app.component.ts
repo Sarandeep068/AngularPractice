@@ -76,7 +76,7 @@ import {
 `]
 })
 export class AppComponent {
-  pageTitle: string = 'Acme Product Management';
+  pageTitle: string = 'Angular Practice';
 
   // Sets initial value to true to show loading spinner on first load
   public loading = true;
